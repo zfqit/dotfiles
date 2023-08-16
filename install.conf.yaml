@@ -41,11 +41,11 @@
     ~/.profile: .shell-scripts/.profile
     ~/.bash_profile: .shell-scripts/.bash_profile
     ~/.shell-scripts: .shell-scripts
+    ~/.ideavimrc: idea/.ideavimrc
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/custom-vscode-assets: vscode/custom-vscode-assets
     ~/Library/Application Support/lazygit/config.yml: lazygit/config.yml
-
 - shell:
     - git submodule update --init --recursive
     - brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-font

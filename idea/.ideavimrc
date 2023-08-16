@@ -1,0 +1,297 @@
+" ================================================================================================
+" = Extensions =====================================
+" ================================================================================================
+set surround
+
+set keep-english-in-normal
+set keep-english-in-normal[-and-restore-in-insert]
+
+" argtextobj
+set argtextobj
+let g:argtextobj_pairs="(:),{:},<:>"
+
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_startofline = 0
+map s <Plug>(easymotion-s)
+map S <PLug>(easymotion-f)
+set easymotion
+
+
+" NERDTree
+let g:NERDTreeMapActivateNode = 'l'
+let g:NERDTreeMapPreview = '<Nop>'
+let g:NERDTreeMapOpenInTab = 'oo'
+let g:NERDTreeMapOpenInTabSilent = '<Nop>'
+let g:NERDTreeMapOpenSplit = 'ov'
+let g:NERDTreeMapPreviewSplit = '<Nop>'
+let g:NERDTreeMapOpenVSplit = 'os'
+let g:NERDTreeMapPreviewVSplit = '<Nop>'
+let g:NERDTreeMapOpenRecursively = '<Nop>'
+let g:NERDTreeMapCloseDir = 'h'
+let g:NERDTreeMapCloseChildren = '<Nop>'
+let g:NERDTreeMapJumpRoot = '<Nop>'
+let g:NERDTreeMapJumpParent = 'K'
+let g:NERDTreeMapJumpFirstChild = '<Nop>'
+let g:NERDTreeMapJumpLastChild = '<Nop>'
+let g:NERDTreeMapJumpNextSibling = 'L'
+let g:NERDTreeMapJumpPrevSibling = 'H'
+let g:NERDTreeMapRefresh = '<Nop>'
+let g:NERDTreeMapRefreshRoot = 'gr'
+let g:NERDTreeMapMenu = '<Nop>'
+"let g:NERDTreeMapQuit ='q'
+let g:NERDTreeMapToggleZoom = '<Nop>'
+set NERDTree
+
+" ================================================================================================
+" = Basic settings =====================================
+" ================================================================================================
+
+
+set clipboard+=unnamed
+set commentary
+set history
+set ignorecase
+set matchpairs
+set multiple-cursors
+set number
+set relativenumber
+set smartcase
+set surround
+set wrapscan
+" IdeaVim only
+set ideajoin=true
+set idearefactormode=visual
+set ideavimsupport=
+
+" 共享系统粘贴板
+set clipboard=unnamed
+set clipboard+=ideaput
+
+" ================================================================================================
+" = Keymaps =====================================
+" ================================================================================================
+
+vmap p \"_dP
+
+imap jk <Esc>
+
+nnoremap ; :
+
+" 插入模式快捷键
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-d> <Delete>
+
+" 标签操作
+nnoremap <S-l> gt
+nnoremap <S-h> gT
+
+" 跳转到错误位置
+nmap ge <action>(GotoNextError)
+" 跳转到测试位置
+nmap gt <action>(GotoTest)
+" 跳转到上个方法
+nmap gm <action>(MethodUp)
+" 跳转到父类
+nnoremap gs :action GotoSuperMethod<CR>
+" 跳转实现类中
+nnoremap gi :action GotoImplementation<CR>
+" 跳转到引用位置
+nnoremap gd :action GotoDeclaration<CR>
+" 跳转到上次修改后的文件内容的位置
+nnoremap gb :action JumpToLastChange<CR>
+" 跳转到本文件上次修改后的位置
+nmap ga '.
+
+" doom-escape-hook
+nnoremap <Esc> :<C-u>nohl<CR>:<C-u>action HideAllWindows<CR><Esc>
+
+" 折叠
+nmap zm <Action>(CollapseAllRegions)
+" 打开折叠
+nmap zr <Action>(ExpandAllRegions)
+
+
+
+" ================================================================================================
+" = Leader Keymaps =====================================
+" ================================================================================================
+
+" leaderkey
+let mapleader=" "
+
+" ================================================================================================
+" 👻👻👻 Leader Keymaps Which-Key 👻👻👻
+" ================================================================================================
+set which-key
+set notimeout
+
+" c: Close ⭐️;
+nmap <leader>c :q!<CR>
+let g:WhichKeyDesc_CloseBuffer = "<leader>c CloseBuffer"
+" e: Toggle Explorer ⭐️
+let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e ToggleExplorer"
+nmap <leader>e <action>(ActivateProjectToolWindow)
+" Jump to bookmark
+map <Leader><CR> <Action>(Bookmarks)
+let g:WhichKeyDesc_jump_to_bookmark = '<leader>⏎ Jump to bookmark'
+" Toggle last popup
+map <Leader>. <Action>(Pangu.Format.Editor)
+let g:WhichKeyDesc_Pangu_Format_Editor = '<leader>. Pangu.Format.Editor'
+" ShowIntentionActions
+map <Leader>/ <Action>(ShowIntentionActions)
+let g:WhichKeyDesc_new_Class = '<leader>/ ShowIntentionActions'
+
+
+"
+" +file
+
+let g:WhichKeyDesc_file_leader = '<leader>f +file'
+" Recent files
+map <Leader>fr <Action>(RecentFiles)
+let g:WhichKeyDesc_recent_files = '<leader>fr Recent files'
+" Save file
+noremap <Leader>fs :<C-u>w<CR>
+let g:WhichKeyDesc_save_file = '<leader>fs Save file'
+" Rename/move file
+map <Leader>fR <Action>(RefactoringMenu)
+let g:WhichKeyDesc_rename_move_file = '<leader>fR Rename/move file'
+" 查看文件位置
+nmap <Leader>fl <Action>(SelectInProjectView)
+let g:WhichKeyDesc_findOrFormat_findFileLocation = "<leader>fl FindFileLocation"
+" 显示该类下的方法
+map <Leader>fm <Action>(FileStructurePopup)
+let g:WhichKeyDesc_show_method = '<leader>fm FileStructurePopup'
+" Show documentation
+map <Leader>fk <Action>(QuickJavaDoc)
+let g:WhichKeyDesc_show_doc = '<leader>fk Show documentation'
+
+
+"
+" +git
+
+let g:WhichKeyDesc_git_leader = '<leader>g +git'
+" commit
+CheckinProject
+map <Leader>gm <Action>(CheckinProject)
+let g:WhichKeyDesc_Git_commit = '<leader>gm Git.Branches'
+" push
+map <Leader>gp <Action>(Vcs.Push)
+let g:WhichKeyDesc_Git_Push = '<leader>gp Vcs.Push'
+" pull
+map <Leader>gl <Action>(Vcs.UpdateProject)
+let g:WhichKeyDesc_Git_pull = '<leader>gl Vcs.UpdateProject'
+" Switch branch
+map <Leader>gb <Action>(Git.Branches)
+let g:WhichKeyDesc_switch_branch = '<leader>gb Switch branch'
+" Status
+map <Leader>gs <Action>(Vcs.Show.Shelf)
+let g:WhichKeyDesc_status = '<leader>gs Status'
+" Git time machine
+map <Leader>gt <Action>(Vcs.ShowTabbedFileHistory)
+let g:WhichKeyDesc_git_time_machine = '<leader>gt Time machine'
+" Blame
+map <Leader>gB <Action>(Annotate)
+let g:WhichKeyDesc_blame = '<leader>gB Blame'
+
+"
+" +help
+
+let g:WhichKeyDesc_help_leader = '<leader>h +help'
+" Show Event Log
+map <Leader>he <Action>(ActivateEventLogToolWindow)
+let g:WhichKeyDesc_event_log = '<leader>he Show Event Log'
+" Reload IdeaVim config
+map <Leader>hr <Action>(IdeaVim.ReloadVimc.reload)
+let g:WhichKeyDesc_reload_ideavim_config = '<leader>hr Reload IdeaVim config'
+" Change theme
+map <Leader>ht <Action>(ChangeLaf)
+let g:WhichKeyDesc_change_theme = '<leader>ht Change theme'
+
+
+"
+" +open
+
+let g:WhichKeyDesc_open_leader = '<leader>o +open'
+" New window
+nmap <Leader>of <Action>(EditSourceInNewWindow)
+let g:WhichKeyDesc_new_window = '<leader>of New window'
+" Select window
+nmap <Leader>oF <Action>(OpenProjectWindows)
+let g:WhichKeyDesc_select_window = '<leader>oF Select window'
+" Reveal in filer
+nmap <Leader>oo <Action>(RevealIn)
+let g:WhichKeyDesc_reveal_in_filer = '<leader>oo Reveal in filer'
+" Open terminal
+nmap <Leader>ot <Action>(ActivateTerminalToolWindow)
+let g:WhichKeyDesc_open_terminal = '<leader>ot Open terminal'
+" Open terminal here
+nmap <Leader>oT <Action>(Terminal.OpenInTerminal)
+let g:WhichKeyDesc_open_terminal_here = '<leader>oT Open terminal here'
+
+"
+" +search
+
+let g:WhichKeyDesc_search_leader = '<leader>s +search'
+" Search project
+map <Leader>sp <Action>(FindInPath)
+let g:WhichKeyDesc_search_project2 = '<leader>sp Search project'
+nmap <leader>sf <action>(GotoFile)
+let g:WhichKeyDesc_search_findFile = "<leader>sf FindFile"
+nmap <leader>sc <action>(GotoAction)
+let g:WhichKeyDesc_FindOrFormat_Commands = "<leader>sc Commands"
+
+"
+" +project
+
+let g:WhichKeyDesc_project_leader = '<leader>p +project'
+" Invalidate project cache
+map <Leader>pi <Action>(InvalidateCaches)
+let g:WhichKeyDesc_invalidate_project_cache = '<leader>pi Invalidate project cache'
+" Switch projects
+map <Leader>pp <Action>(ManageRecentProjects)
+let g:WhichKeyDesc_switch_projects = '<leader>pp Switch projects'
+" Show TODO
+map <Leader>pt <Action>(ActivateTODOToolWindow)
+let g:WhichKeyDesc_show_todo = '<leader>pt Show TODO'
+" List project tasks
+map <Leader>pz <Action>(RunAnything)
+let g:WhichKeyDesc_list_project_tasks = '<leader>pz List project tasks'
+
+"
+" +refactoring
+
+" Code cleanup
+let g:WhichKeyDesc_refactoring_leader = '<leader>m +refactoring'
+
+" Select what to generate
+let g:WhichKeyDesc_Major_Refactoring_Generate = "<leader>mg generate"
+nnoremap <leader>mg      :action Generate<CR>
+vnoremap <leader>mg      <Esc>:action Generate<CR>
+
+" Create a new Element.
+let g:WhichKeyDesc_Major_Refactoring_NewElement = "<leader>mn new-element"
+nnoremap <leader>mn      :action NewElement<CR>
+vnoremap <leader>mn      :action NewElement<CR>
+
+" Choose a refactoring action
+let g:WhichKeyDesc_Major_Refactoring_ChooseRefactoringAction = "<leader>mr choose-refactoring-action"
+nnoremap <leader>mr      :action Refactorings.QuickListPopupAction<CR>
+vnoremap <leader>mr      <Esc>:action Refactorings.QuickListPopupAction<CR>
+""" Extract Submenu ---------------------------------
+let g:WhichKeyDesc_Major_Refactoring_CoFdeCleanup_Extract = "<leader>me +extract"
+
+" Extract method
+let g:WhichKeyDesc_Major_Refactoring_CodeCleanup_Extract_Method = "<leader>mem method"
+nnoremap <leader>mem    :action ExtractMethod<CR>
+vnoremap <leader>mem    <Esc>:action ExtractMethod<CR>
+
+" Extract superclass
+let g:WhichKeyDesc_Major_Refactoring_CodeCleanup_Extract_Superclass = "<leader>mes superclass"
+nnoremap <leader>mes    :action ExtractSuperclass<CR>
+vnoremap <leader>mes    <Esc>:action ExtractSuperclass<CR>
+""" ---------------------------------------------
