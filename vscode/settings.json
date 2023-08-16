@@ -1,0 +1,53 @@
+{
+  "editor.formatOnSave": true,
+  "editor.fontSize": 15,
+  "editor.lineHeight": 32,
+  "files.autoSave": "off",
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "editor.detectIndentation": false,
+  "workbenchext.editor.zoom": -1,
+  "git.autofetch": true,
+  "explorer.confirmDelete": false,
+  "workbench.colorTheme": "One Dark Pro",
+  "[javascript]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "vim.autoSwitchInputMethod.enable": true,
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    }
+  ],
+  "workbench.editorAssociations": [
+    {
+      "filenamePattern": "project.miniapp.json",
+      "viewType": "settingsEditor.settingsedit"
+    }
+  ],
+  "files.eol": "auto",
+  "workbench.iconTheme": "vscode-icons"
+}
