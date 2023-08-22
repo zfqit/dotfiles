@@ -24,11 +24,11 @@ yabai -m config layout bsp
 yabai -m config window_placement second_child
 
 # 上下左右边距和空隙
-yabai -m config top_padding    3
+yabai -m config top_padding 3
 yabai -m config bottom_padding 3
-yabai -m config left_padding   3
-yabai -m config right_padding  3
-yabai -m config window_gap     3
+yabai -m config left_padding 3
+yabai -m config right_padding 3
+yabai -m config window_gap 3
 
 # 添加上填充25(spacebar 高度)
 yabai -m config external_bar all:0:25
@@ -51,10 +51,9 @@ yabai -m config mouse_follows_focus off
 systemApp='^(访达|计算器|Calendar|活动监视器|日历|System Preferences|系统偏好设置|Mail|备忘录|邮件)$'
 yabai -m rule --add app="${systemApp}" manage=off
 
-
 # Users Applications
-otherApp='^(IINA|微信|WeChatc|QQ|网易云音乐|Tencent Lemon|企业微信|Docker Desktop|ClashX|Raycast|Apifox|Parsec|滴答清单|Another Redis Desktop Manager|腾讯会议|钉钉|ToDesk)$'
+otherApp='^(IINA|微信|WeChatc|QQ|网易云音乐|Tencent Lemon|企业微信|Docker Desktop|ClashX|Raycast|Apifox|Parsec|滴答清单|Another Redis Desktop Manager|腾讯会议|钉钉|ToDesk|qView)$'
 yabai -m rule --add app="${otherApp}" manage=off
 
 ### config loaded
-echo "yabai config loaded";
+echo "yabai config loaded"
