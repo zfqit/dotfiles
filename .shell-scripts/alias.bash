@@ -31,3 +31,11 @@ alias gs='git status'
 # docker & dockerc-compose
 alias d='docker'
 alias dc='docker-compose'
+
+# pnpm
+alias p='pnpm'
+alias pi='pnpm install'
+alias pd='bun run dev'
+alias pt='bun run test'
+alias pb='bun run build'
+alias pu='pnpm i -g pnpm'
