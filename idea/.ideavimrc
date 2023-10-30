@@ -14,8 +14,8 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_startofline = 0
 map s <Plug>(easymotion-s)
 map S <PLug>(easymotion-f)
-set easymotion
 
+set easymotion
 
 " NERDTree
 let g:NERDTreeMapActivateNode = 'l'
@@ -38,14 +38,14 @@ let g:NERDTreeMapJumpPrevSibling = 'H'
 let g:NERDTreeMapRefresh = '<Nop>'
 let g:NERDTreeMapRefreshRoot = 'gr'
 let g:NERDTreeMapMenu = '<Nop>'
-"let g:NERDTreeMapQuit ='q'
+let g:NERDTreeMapQuit ='q'
 let g:NERDTreeMapToggleZoom = '<Nop>'
+let g:NERDTreeMapJump
 set NERDTree
 
 " ================================================================================================
 " = Basic settings =====================================
 " ================================================================================================
-
 
 set clipboard+=unnamed
 set commentary
@@ -73,48 +73,28 @@ set clipboard+=ideaput
 
 vmap p \"_dP
 
-imap jk <Esc>
-
 nnoremap ; :
-
-" 插入模式快捷键
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-inoremap <C-d> <Delete>
 
 " 标签操作
 nnoremap <S-l> gt
 nnoremap <S-h> gT
 
-" 跳转到错误位置
-nmap ge <action>(GotoNextError)
-" 跳转到测试位置
-nmap gt <action>(GotoTest)
-" 跳转到上个方法
-nmap gm <action>(MethodUp)
-" 跳转到父类
-nnoremap gs :action GotoSuperMethod<CR>
-" 跳转实现类中
-nnoremap gi :action GotoImplementation<CR>
-" 跳转到引用位置
-nnoremap gd :action GotoDeclaration<CR>
-" 跳转到上次修改后的文件内容的位置
-nnoremap gb :action JumpToLastChange<CR>
-" 跳转到本文件上次修改后的位置
-nmap ga '.
-
 " doom-escape-hook
 nnoremap <Esc> :<C-u>nohl<CR>:<C-u>action HideAllWindows<CR><Esc>
 
-" 折叠
-nmap zm <Action>(CollapseAllRegions)
-" 打开折叠
-nmap zr <Action>(ExpandAllRegions)
-
+" 侧边栏函数
+let g:isOpenSidebar = 1
+function! toggleSidebar()
+    if g:isOpenSidebar == 1
+        let g:isOpenSidebar = 0
+        action HideActiveWindow
+    elseif g:isOpenSidebar == 0
+        let g:isOpenSidebar = 1
+        action ActivateProjectToolWindow
+    endif
+endfunction
+" 打开或关闭侧边栏
+nmap <C-e> :call toggleSidebar()<CR>
 
 
 " ================================================================================================
@@ -130,12 +110,57 @@ let mapleader=" "
 set which-key
 set notimeout
 
-" c: Close ⭐️;
-nmap <leader>c :q!<CR>
-let g:WhichKeyDesc_CloseBuffer = "<leader>c CloseBuffer"
-" e: Toggle Explorer ⭐️
-let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e ToggleExplorer"
-nmap <leader>e <action>(ActivateProjectToolWindow)
+
+" g
+
+" 跳转到测试位置
+nmap gt <action>(GotoTest)
+let g:WhichKeyDesc_go_to_test = 'gt Go to Test'
+" 跳转到父类
+nmap gs :action GotoSuperMethod<CR>
+let g:WhichKeyDesc_go_to_super_method = 'gs Go to Super Method'
+" 跳转实现类中
+nmap gi :action GotoImplementation<CR>
+let g:WhichKeyDesc_go_to_implementation = 'gi Go to Implementation'
+" 跳转到引用位置
+nmap gd :action GotoDeclaration<CR>
+let g:WhichKeyDesc_go_to_declaration = 'gd Go to Declaration'
+" 跳转到上次修改后的文件内容的位置
+nmap gb :action JumpToLastChange<CR>
+let g:WhichKeyDesc_jump_to_last_change = 'gb Jump to LastChange'
+" 跳转到本文件上次修改后的位置
+nmap ga '.
+let g:WhichKeyDesc_current_jump_to_last_change = 'ga Current Jump to LastChange'
+" 跳转到上次上述跳转的上个位置 后退
+nmap gh :action Back<CR>
+let g:WhichKeyDesc_back = 'gh back'
+" 跳转到上次上述跳转的下个位置 前进
+nmap gl :action Forward<CR>
+let g:WhichKeyDesc_Forward = 'gl Forward'
+" 折叠
+nmap zm <Action>(CollapseAllRegions)
+let g:WhichKeyDesc_collapse_all_regions = 'zm Collapse All Regions'
+" 打开折叠
+nmap zr <Action>(ExpandAllRegions)
+let g:WhichKeyDesc_expand_all_regions = 'zr Expand All Regions'
+" 打开类结构
+nmap zg <Action>(ActivateStructureToolWindow)
+let g:WhichKeyDesc_activate_structure_tool_window = 'zg ActivateStructureToolWindow'
+" Go to previous error
+nmap [e <Action>(GotoPreviousError)
+let g:WhichKeyDesc_go_to_prev_error1 = '[e Go to previous error'
+nmap <C-c>!p <Action>(GotoPreviousError)
+" Go to next error
+nmap ]e <Action>(GotoNextError)
+let g:WhichKeyDesc_go_to_next_error1 = ']e Go to next error'
+nmap <C-c>!n <Action>(GotoNextError)
+" Go to previous method
+nmap [[ <Action>(MethodUp)
+let g:WhichKeyDesc_go_to_prev_method = '[[ Go to previous method'
+" Go to next method
+nmap ]] <Action>(MethodDown)
+let g:WhichKeyDesc_go_to_next_method = ']] Go to next method'
+
 " Jump to bookmark
 map <Leader><CR> <Action>(Bookmarks)
 let g:WhichKeyDesc_jump_to_bookmark = '<leader>⏎ Jump to bookmark'
@@ -145,6 +170,42 @@ let g:WhichKeyDesc_Pangu_Format_Editor = '<leader>. Pangu.Format.Editor'
 " ShowIntentionActions
 map <Leader>/ <Action>(ShowIntentionActions)
 let g:WhichKeyDesc_new_Class = '<leader>/ ShowIntentionActions'
+
+
+"
+" +code
+
+let g:WhichKeyDesc_code_leader = '<leader>c +code'
+" Jump to references
+map <Leader>cD <Action>(ShowUsages)
+let g:WhichKeyDesc_jump_to_refs = '<leader>cD Jump to references'
+" Execute Intention Action
+map <Leader>ca <Action>(GotoAction)
+let g:WhichKeyDesc_exec_intention_action = '<leader>ca GotoAction'
+" Compile
+map <Leader>cc <Action>(CompileDirty)
+let g:WhichKeyDesc_compile = '<leader>cc Compile'
+" Format buffer/region
+nmap <Leader>cf <Action>(ReformatCode)
+let g:WhichKeyDesc_format_buffer_region = '<leader>cf Format buffer/region'
+" Jump to symbol in current workspace
+map <Leader>cj <Action>(SearchEverywhere)
+let g:WhichKeyDesc_jump_to_symbol_in_current_workspace = '<leader>cj Jump to symbol in current workspace'
+" Show documentation
+map <Leader>ck <Action>(QuickJavaDoc)
+let g:WhichKeyDesc_show_doc = '<leader>ck Show documentation'
+" Organize imports
+map <Leader>co <Action>(OptimizeImports)
+let g:WhichKeyDesc_organize_imports = '<leader>co Organize imports'
+" Rename
+map <Leader>cr <Action>(RenameElement)
+let g:WhichKeyDesc_rename = '<leader>cr Rename'
+" Find type definition
+map <Leader>ct <Action>(GotoTypeDeclaration)
+let g:WhichKeyDesc_find_type_def = '<leader>ct Find type definition'
+" Recompile
+map <Leader>cC <Action>(Compile)
+let g:WhichKeyDesc_recompile = '<leader>cC Recompile'
 
 
 "

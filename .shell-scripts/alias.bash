@@ -18,6 +18,7 @@ alias la='ls -al'
 
 # vifm: https://github.com/vifm/vifm
 alias vifm='vifm . ~/Desktop/codes'
+alias vim='nvim'
 
 # vscode: https://code.visualstudio.com/
 # vscode-insiders: https://code.visualstudio.com/insiders/
@@ -38,4 +39,4 @@ alias pi='pnpm install'
 alias pd='bun run dev'
 alias pt='bun run test'
 alias pb='bun run build'
-alias pu='pnpm i -g pnpm'
+alias pu='npm i -g pnpm'

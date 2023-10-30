@@ -1,62 +1,15 @@
-// {
-//   "editor.formatOnSave": true,
-//   "editor.fontSize": 15,
-//   "editor.lineHeight": 32,
-//   "files.autoSave": "off",
-//   "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
-//   "editor.wordWrap": "on",
-//   "editor.minimap.enabled": false,
-//   "editor.insertSpaces": true,
-//   "editor.tabSize": 2,
-//   "workbench.editor.enablePreview": true,
-//   "workbench.editor.enablePreviewFromQuickOpen": true,
-//   "editor.detectIndentation": false,
-//   "workbenchext.editor.zoom": -1,
-//   "git.autofetch": true,
-//   "explorer.confirmDelete": false,
-//   "[javascript]": {
-//     "editor.defaultFormatter": "HookyQR.beautify"
-//   },
-//   "vim.autoSwitchInputMethod.enable": true,
-//   "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
-//   "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
-//   "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
-//   "vim.visualModeKeyBindingsNonRecursive": [
-//     {
-//       "before": ["L"],
-//       "after": ["$"]
-//     },
-//     {
-//       "before": ["H"],
-//       "after": ["^"]
-//     }
-//   ],
-//   "vim.normalModeKeyBindingsNonRecursive": [
-//     {
-//       "before": ["L"],
-//       "after": ["$"]
-//     },
-//     {
-//       "before": ["H"],
-//       "after": ["^"]
-//     }
-//   ],
-//   "workbench.editorAssociations": [
-//     {
-//       "filenamePattern": "project.miniapp.json",
-//       "viewType": "settingsEditor.settingsedit"
-//     }
-//   ],
-//   "files.eol": "auto",
-//   "workbench.iconTheme": "vscode-icons"
-// }
 {
+  // 配置Vetur插件的选项忽略提示
+  "vetur.ignoreProjectWarning": true,
+  // 保存后格式化
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
   // 窗口缩放 & 关闭顶部搜索栏
   "window.zoomLevel": 0,
   "window.commandCenter": false,
   // 编辑器 & 终端字体设置
   "editor.fontSize": 16,
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'OperatorMono Nerd Font Mono', 'Maple Mono NF', 'Hack Nerd Font Mono'",
   "editor.fontWeight": 300,
   "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
@@ -114,7 +67,6 @@
   /////////////////////////////////////////
   // 颜色主题/图标主题
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Tokyo Night",
   // 打开设置使用左右json
   "workbench.settings.editor": "json",
   "workbench.settings.useSplitJSON": true,
@@ -124,14 +76,7 @@
   // extensions
   /////////////////////////////////////////
   // Template String Converter
-  "template-string-converter.validLanguages": [
-    "svelte",
-    "typescript",
-    "javascript",
-    "typescriptreact",
-    "javascriptreact",
-    "vue"
-  ],
+  "template-string-converter.validLanguages": ["svelte", "typescript", "javascript", "typescriptreact", "javascriptreact", "vue"],
   // 图标插件隐藏左边的箭头
   "vsicons.presets.hideExplorerArrows": true,
   "material-icon-theme.hidesExplorerArrows": true,
@@ -144,15 +89,7 @@
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "eslint.quiet": true,
-  "eslint.probe": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "html",
-    "vue",
-    "jsx"
-  ],
+  "eslint.probe": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "jsx"],
   "eslint.alwaysShowStatus": true,
   "eslint.debug": true,
   // prettier 格式化默认设置
@@ -161,17 +98,10 @@
   // 自定义宏(自定义命令):在 keybindings/vim/vspcecode 快捷键中可以用
   // 需要安装插件: https://marketplace.visualstudio.com/items?itemName=jeff-hykin.macro-commander
   "macros": {
-    "copyExplorerFileWithoutRename": [
-      "filesExplorer.copy",
-      "filesExplorer.paste"
-    ]
+    "copyExplorerFileWithoutRename": ["filesExplorer.copy", "filesExplorer.paste"]
   },
   // vscode 自定义加载 css/js   custom-vscode-assets
-  "vscode_custom_css.imports": [
-    "file:///Users/liaohui5/Desktop/codes/dotfiles/vscode/custom-vscode-assets/explorer-scrollbar.css"
-  ],
-  // type-challeges
-  "typeChallenges.workspaceFolder": "/Users/liaohui5/Desktop/codes/type-challeges",
+  "vscode_custom_css.imports": ["file:///Users/zhou/Desktop/codes/dotfiles/vscode/custom-vscode-assets/explorer-scrollbar.css"],
   //////////////////////////////////////////////////////////////////////////////
   //                                VIM 插件配置                               //
   //                   _                              __ _                    //
@@ -223,17 +153,11 @@
   // visual 模式快捷键
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
     },
     {
-      "before": [
-        ","
-      ],
+      "before": [","],
       "commands": [
         "vspacecode.space",
         {
@@ -243,113 +167,54 @@
       ]
     },
     {
-      "before": [
-        "$"
-      ],
-      "after": [
-        "$",
-        "h"
-      ]
+      "before": ["$"],
+      "after": ["$", "h"]
     },
     {
-      "before": [
-        "x"
-      ],
-      "after": [
-        "\"",
-        "_",
-        "x"
-      ]
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
     },
     {
-      "before": [
-        "<c-d>"
-      ],
-      "after": [
-        "<c-d>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-d>"],
+      "after": ["<c-d>", "z", "z"]
     },
     {
-      "before": [
-        "<c-u>"
-      ],
-      "after": [
-        "<c-u>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-u>"],
+      "after": ["<c-u>", "z", "z"]
     },
     {
-      "before": [
-        "<c-b>"
-      ],
-      "after": [
-        "<c-b>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-b>"],
+      "after": ["<c-b>", "z", "z"]
     },
     {
-      "before": [
-        "<c-f>"
-      ],
-      "after": [
-        "<c-f>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-f>"],
+      "after": ["<c-f>", "z", "z"]
     },
     {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "tab"
-      ]
+      "before": [">"],
+      "commands": ["tab"]
     },
     {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "outdent"
-      ]
+      "before": ["<"],
+      "commands": ["outdent"]
     },
     {
-      "before": [
-        "ctrl",
-        "\\"
-      ],
-      "commands": [
-        "editor.action.commentLine"
-      ]
+      "before": ["ctrl", "\\"],
+      "commands": ["editor.action.commentLine"]
     },
     {
-      "before": [
-        "<leader>",
-        "l"
-      ],
-      "commands": [
-        "extension.insertLogStatement"
-      ]
-    },
+      "before": ["<leader>", "l"],
+      "commands": ["extension.insertLogStatement"]
+    }
   ],
   // normal 模式快捷键
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<space>"
-      ],
-      "commands": [
-        "vspacecode.space"
-      ]
+      "before": ["<space>"],
+      "commands": ["vspacecode.space"]
     },
     {
-      "before": [
-        ","
-      ],
+      "before": [","],
       "commands": [
         "vspacecode.space",
         {
@@ -359,106 +224,48 @@
       ]
     },
     {
-      "before": [
-        "-"
-      ],
-      "commands": [
-        ":nohl"
-      ]
+      "before": ["-"],
+      "commands": [":nohl"]
     },
     {
-      "before": [
-        "x"
-      ],
-      "after": [
-        "\"",
-        "_",
-        "x"
-      ]
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
     },
     {
-      "before": [
-        "<c-d>"
-      ],
-      "after": [
-        "<c-d>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-d>"],
+      "after": ["<c-d>", "z", "z"]
     },
     {
-      "before": [
-        "<c-u>"
-      ],
-      "after": [
-        "<c-u>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-u>"],
+      "after": ["<c-u>", "z", "z"]
     },
     {
-      "before": [
-        "<c-b>"
-      ],
-      "after": [
-        "<c-b>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-b>"],
+      "after": ["<c-b>", "z", "z"]
     },
     {
-      "before": [
-        "<c-f>"
-      ],
-      "after": [
-        "<c-f>",
-        "z",
-        "z"
-      ]
+      "before": ["<c-f>"],
+      "after": ["<c-f>", "z", "z"]
     },
     {
-      "before": [
-        "<S-h>"
-      ],
-      "commands": [
-        "workbench.action.previousEditorInGroup"
-      ]
+      "before": ["<S-h>"],
+      "commands": ["workbench.action.previousEditorInGroup"]
     },
     {
-      "before": [
-        "<S-l>"
-      ],
-      "commands": [
-        "workbench.action.nextEditorInGroup"
-      ]
+      "before": ["<S-l>"],
+      "commands": ["workbench.action.nextEditorInGroup"]
     },
     {
-      "before": [
-        "g",
-        "d"
-      ],
-      "commands": [
-        "editor.action.revealDefinition"
-      ]
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"]
     },
     {
-      "before": [
-        "g",
-        "h"
-      ],
-      "commands": [
-        "editor.action.showHover"
-      ]
+      "before": ["g", "h"],
+      "commands": ["editor.action.showHover"]
     },
     {
-      "before": [
-        "s"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "s"
-      ]
+      "before": ["s"],
+      "after": ["<leader>", "<leader>", "s"]
     }
   ],
   // =============================================//
@@ -487,10 +294,7 @@
           "name": "auto import",
           "type": "commands",
           "icon": "file-symlink-file",
-          "commands": [
-            "extension.scanNodeModules",
-            "editor.action.organizeImports"
-          ]
+          "commands": ["extension.scanNodeModules", "editor.action.organizeImports"]
         }
       ]
     },
@@ -515,10 +319,7 @@
       "name": "format document",
       "type": "command",
       "icon": "symbol-namespace",
-      "commands": [
-        "editor.action.formatDocument",
-        "workbench.action.files.save"
-      ]
+      "commands": ["editor.action.formatDocument", "workbench.action.files.save"]
     },
     {
       // <leader>bb
@@ -588,5 +389,9 @@
   ],
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
+  },
+  "workbench.colorTheme": "rimless-monokai",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
   }
 }
