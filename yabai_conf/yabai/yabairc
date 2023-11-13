@@ -34,13 +34,13 @@ yabai -m config window_gap 3
 yabai -m config external_bar all:0:25
 
 # 开启边框(removed options)
-# yabai -m config window_border on
-# yabai -m config window_border_width 1
-# yabai -m config active_window_border_color 0xff00ff00
-# yabai -m config normal_window_border_color 0x00888888
-yabai -m config window_opacity on
-yabai -m config normal_window_opacity 0.8
-yabai -m config active_window_opacity 1
+yabai -m config window_border on
+yabai -m config window_border_width 1
+yabai -m config active_window_border_color 0xff00ff00
+yabai -m config normal_window_border_color 0x00888888
+# yabai -m config window_opacity on
+# yabai -m config normal_window_opacity 0.8
+# yabai -m config active_window_opacity 1
 
 # 禁用光标跟随模式
 yabai -m config focus_follows_mouse off
@@ -55,7 +55,7 @@ systemApp='^(访达|计算器|Calendar|活动监视器|日历|System Preferences
 yabai -m rule --add app="${systemApp}" manage=off
 
 # Users Applications
-otherApp='^(pot|IINA|微信|WeChatc|QQ|网易云音乐|Tencent Lemon|企业微信|Docker Desktop|ClashX|Raycast|Apifox|Parsec|滴答清单|Another Redis Desktop Manager|腾讯会议|钉钉|ToDesk|qView|lx-music-desktop|Motrix|Telegram)$'
+otherApp='^(pot|IINA|微信|WeChatc|QQ|网易云音乐|Tencent Lemon|企业微信|Docker Desktop|ClashX|Raycast|Apifox|Parsec|Another Redis Desktop Manager|腾讯会议|钉钉|ToDesk|qView|lx-music-desktop|Motrix|Telegram)$'
 yabai -m rule --add app="${otherApp}" manage=off
 
 ### config loaded
