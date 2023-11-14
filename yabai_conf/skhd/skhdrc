@@ -6,11 +6,10 @@
 # ╭──────────────────────────────────────────────────────────────────────────────╮
 # │ 切换窗口焦点                                                                 │
 # ╰──────────────────────────────────────────────────────────────────────────────╯
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
-
+alt - h : yabai -m window --focus west || yabai -m window --focus mouse
+alt - j : yabai -m window --focus south || yabai -m window --focus mouse
+alt - k : yabai -m window --focus north || yabai -m window --focus mouse
+alt - l : yabai -m window --focus east || yabai -m window --focus mouse
 # ╭──────────────────────────────────────────────────────────────────────────────╮
 # │ 移动窗口位置                                                                 │
 # ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -94,12 +93,10 @@ ctrl + shift - 9 : yabai -m window --space 9
 ctrl + shift - 0 : yabai -m window --space 10
 
 # 只移动光标,不带着当前窗口的软件移动
-shift + cmd - h : yabai -m space --focus prev
-shift + cmd - l : yabai -m space --focus next
+shift + cmd - h : yabai -m space --focus prev || yabai -m space --focus last
+shift + cmd - l : yabai -m space --focus next || yabai -m space --focus first
 
 # 将当前窗口发送到指定桌面(跟随)
-# shift + cmd - k : yabai -m window --space prev && yabai -m space --focus prev
-# shift + cmd - j : yabai -m window --space next && yabai -m space --focus next
 shift + cmd - 1 : yabai -m window --space 1 && yabai -m space --focus 1
 shift + cmd - 2 : yabai -m window --space 2 && yabai -m space --focus 2
 shift + cmd - 3 : yabai -m window --space 3 && yabai -m space --focus 3
@@ -114,12 +111,12 @@ shift + cmd - 0 : yabai -m window --space 9 && yabai -m space --focus 10
 #  ╭──────────────────────────────────────────────────────────────────────────────╮
 #  │ launcher                                                                     │
 #  ╰──────────────────────────────────────────────────────────────────────────────╯
-alt - 1: open -a "obsidian"               # obsidian
+alt - 1: open -a "TickTick"               # TickTick
 alt - 2: open -a "WezTerm"                # 终端 WezTerm
 alt - 3: open -a "IntelliJ IDEA Ultimate" # IDEA
 alt - 4: open -a "wechatwebdevtools"      # 微信开发者工具
 alt - 5: open -a "Visual Studio Code"     # vscode
-alt - 6: open -a "TickTick"               # TickTick
+alt - 6: open -a "obsidian"               # obsidian
 alt - 7: open -a "Sequel Ace"             # Sequel Ace
 alt - 8: open -a "lx-music-desktop"       # lx-music-desktop 网易云音乐
 alt - 9: open -a "Launchpad"              # 启动项

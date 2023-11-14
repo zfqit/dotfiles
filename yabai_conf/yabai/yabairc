@@ -44,7 +44,7 @@ yabai -m config normal_window_border_color 0x00888888
 
 # 禁用光标跟随模式
 yabai -m config focus_follows_mouse off
-yabai -m config mouse_follows_focus off
+yabai -m config mouse_follows_focus on
 
 # ╭──────────────────────────────────────────────────────────────────────────────╮
 # │ 忽略不需要平铺的软件                                                         │
@@ -55,7 +55,8 @@ systemApp='^(访达|计算器|Calendar|活动监视器|日历|System Preferences
 yabai -m rule --add app="${systemApp}" manage=off
 
 # Users Applications
-otherApp='^(pot|IINA|微信|WeChatc|QQ|网易云音乐|Tencent Lemon|企业微信|Docker Desktop|ClashX|Raycast|Apifox|Parsec|Another Redis Desktop Manager|腾讯会议|钉钉|ToDesk|qView|lx-music-desktop|Motrix|Telegram)$'
+# Apifox|Parsec|Another Redis Desktop Manager|ToDesk|微信|WeChatc|QQ|Telegram
+otherApp='^(pot|IINA|网易云音乐|Tencent Lemon|企业微信|Docker Desktop|ClashX|Raycast|腾讯会议|钉钉|qView|lx-music-desktop|Motrix)$'
 yabai -m rule --add app="${otherApp}" manage=off
 
 ### config loaded
