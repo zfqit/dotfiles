@@ -55,8 +55,8 @@ systemApp='^(访达|计算器|Calendar|活动监视器|日历|System Preferences
 yabai -m rule --add app="${systemApp}" manage=off
 
 # Users Applications
-# Apifox|Parsec|Another Redis Desktop Manager|ToDesk|微信|WeChatc|QQ|Telegram
-otherApp='^(pot|IINA|网易云音乐|Tencent Lemon|企业微信|Docker Desktop|ClashX|Raycast|腾讯会议|钉钉|qView|lx-music-desktop|Motrix)$'
+# Apifox|Parsec|Another Redis Desktop Manager|ToDesk
+otherApp='^(pot|IINA|网易云音乐|Tencent Lemon|微信|WeChatc|QQ|Telegra|企业微信|Docker Desktop|ClashX|Raycast|腾讯会议|钉钉|qView|lx-music-desktop|Motrix)$'
 yabai -m rule --add app="${otherApp}" manage=off
 
 ### config loaded
