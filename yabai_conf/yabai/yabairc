@@ -56,7 +56,7 @@ yabai -m rule --add app="${systemApp}" manage=off
 
 # Users Applications
 # Apifox|Parsec|Another Redis Desktop Manager|ToDesk
-otherApp='^(pot|IINA|网易云音乐|Tencent Lemon|微信|WeChatc|QQ|Telegra|企业微信|Docker Desktop|ClashX|Raycast|腾讯会议|钉钉|qView|lx-music-desktop|Motrix)$'
+otherApp='^(pot|IINA|网易云音乐|Tencent Lemon|微信|WeChatc|QQ|Telegra|企业微信|Docker Desktop|ClashX|Raycast|腾讯会议|钉钉|qView|LX Music|Motrix)$'
 yabai -m rule --add app="${otherApp}" manage=off
 
 ### config loaded

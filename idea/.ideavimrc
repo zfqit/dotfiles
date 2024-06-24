@@ -2,20 +2,49 @@
 " = Extensions =====================================
 " ================================================================================================
 set surround
-
+" 输入法插件
 set keep-english-in-normal
-set keep-english-in-normal[-and-restore-in-insert]
+" window 默认情况下使用
+" set keep-english-in-normal[-and-restore-in-insert]
+" Mac 使用
+let keep_input_source_in_normal="com.apple.keylayout.ABC"
 
 " argtextobj
 set argtextobj
 let g:argtextobj_pairs="(:),{:},<:>"
+set textobj-entire
 
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_startofline = 0
-map s <Plug>(easymotion-s)
-map S <PLug>(easymotion-f)
 
 set easymotion
+unmap <Leader><Space>
+map gsb <Plug>(easymotion-bl)
+map gse <Plug>(easymotion-el)
+map gsf <Plug>(easymotion-f)
+map gsF <Plug>(easymotion-F)
+map gsj <Plug>(easymotion-j)
+map gsk <Plug>(easymotion-k)
+map gsn <Plug>(easymotion-n)
+map gsN <Plug>(easymotion-N)
+map gss <Plug>(easymotion-s2)
+map gst <Plug>(easymotion-t)
+map gsT <Plug>(easymotion-T)
+map gsw <Plug>(easymotion-wl)
+map gsge <Plug>(easymotion-gel)
+
+set multiple-cursors
+" Remap multiple-cursors shortcuts for Mac
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap <C-x> <Plug>SkipOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+nmap <C-p> <Plug>RemoveOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+nmap <S-C-n> <Plug>AllWholeOccurrences
+xmap <S-C-n> <Plug>AllWholeOccurrences
+
+set highlightedyank
 
 " NERDTree
 let g:NERDTreeMapActivateNode = 'l'
@@ -38,10 +67,15 @@ let g:NERDTreeMapJumpPrevSibling = 'H'
 let g:NERDTreeMapRefresh = '<Nop>'
 let g:NERDTreeMapRefreshRoot = 'gr'
 let g:NERDTreeMapMenu = '<Nop>'
-let g:NERDTreeMapQuit ='q'
+" let g:NERDTreeMapQuit = 'q'
 let g:NERDTreeMapToggleZoom = '<Nop>'
-let g:NERDTreeMapJump
 set NERDTree
+
+
+let g:WhichKey_DefaultDelay = 500
+let g:WhichKey_ShowVimActions = 'true'
+set notimeout
+set which-key
 
 " ================================================================================================
 " = Basic settings =====================================
@@ -54,18 +88,24 @@ set ignorecase
 set matchpairs
 set multiple-cursors
 set number
-set relativenumber
+" set relativenumber
+" 滚动时保持上下边距
+" set scrolloff=5
+" 该设置可以将光标定位到窗口中间位置
+" set scrolloff=999
+
 set smartcase
 set surround
 set wrapscan
 " IdeaVim only
-set ideajoin=true
+set ideajoin
 set idearefactormode=visual
-set ideavimsupport=
+set ideavimsupport=true
 
 " 共享系统粘贴板
 set clipboard=unnamed
 set clipboard+=ideaput
+
 
 " ================================================================================================
 " = Keymaps =====================================
@@ -78,24 +118,66 @@ nnoremap ; :
 " 标签操作
 nnoremap <S-l> gt
 nnoremap <S-h> gT
+"nmap [t <Action>(PreviousTab)
+"nmap ]t <Action>(NextTab)
+
+nnoremap w [w
+nnoremap e ]w
+nnoremap b [b
+nnoremap ge ]b
+vnoremap w [w
+vnoremap e ]w
+vnoremap b [b
+vnoremap ge ]b
+
+"nnoremap L $
+"vnoremap L $
+"nnoremap H ^
+"vnoremap H ^
+
+" evil-escape
+imap jk <Esc>
+
+" Insert newline above
+nnoremap [<Space> O<Esc>j
+vnoremap [<Space> <Esc>O<Esc>j
+let g:WhichKeyDesc_insert_newline_above = '[<Space> Insert newline above'
+" Insert newline below
+nnoremap ]<Space> o<Esc>k
+vnoremap ]<Space> <Esc>o<Esc>k
+let g:WhichKeyDesc_insert_newline_below = ']<Space> Insert newline below'
 
 " doom-escape-hook
 nnoremap <Esc> :<C-u>nohl<CR>:<C-u>action HideAllWindows<CR><Esc>
 
-" 侧边栏函数
-let g:isOpenSidebar = 1
-function! toggleSidebar()
-    if g:isOpenSidebar == 1
-        let g:isOpenSidebar = 0
-        action HideActiveWindow
-    elseif g:isOpenSidebar == 0
-        let g:isOpenSidebar = 1
-        action ActivateProjectToolWindow
-    endif
-endfunction
 " 打开或关闭侧边栏
-nmap <C-e> :call toggleSidebar()<CR>
+nmap <C-e> :<C-u>NERDTreeToggle<CR>
 
+"
+" Hybrid mode
+
+" Go to first character
+inoremap <C-a> <Esc>I
+cnoremap <C-a> <Home>
+" Go left
+inoremap <C-b> <Left>
+" Delete character
+inoremap <C-d> <Del>
+" Go to end of line
+inoremap <C-e> <Esc>A
+cnoremap <C-e> <End>
+" Go right
+inoremap <C-f> <Right>
+" Delete to line end
+inoremap <C-k> <Esc>:action EditorDeleteToLineEnd<CR>a
+" Go down
+inoremap <C-n> <Down>
+" Go up
+inoremap <C-p> <Up>
+" Go to previous word
+inoremap <A-b> <Esc>:action EditorPreviousWord<CR>i
+" Go to next word
+inoremap <A-f> <Esc>:action EditorNextWord<CR>a
 
 " ================================================================================================
 " = Leader Keymaps =====================================
@@ -107,11 +189,8 @@ let mapleader=" "
 " ================================================================================================
 " 👻👻👻 Leader Keymaps Which-Key 👻👻👻
 " ================================================================================================
-set which-key
-set notimeout
 
-
-" g
+" no leaderKey"
 
 " 跳转到测试位置
 nmap gt <action>(GotoTest)
@@ -155,42 +234,68 @@ nmap ]e <Action>(GotoNextError)
 let g:WhichKeyDesc_go_to_next_error1 = ']e Go to next error'
 nmap <C-c>!n <Action>(GotoNextError)
 " Go to previous method
-nmap [[ <Action>(MethodUp)
+nmap [[<Action>(MethodUp)
 let g:WhichKeyDesc_go_to_prev_method = '[[ Go to previous method'
 " Go to next method
 nmap ]] <Action>(MethodDown)
 let g:WhichKeyDesc_go_to_next_method = ']] Go to next method'
 
+"
+" +leader
+" Search project
+map <Leader>/ <Action>(FindInPath)
+let g:WhichKeyDesc_search_project1 = '<leader>/ Search project'
+" Find file
+map <Leader>. <Action>(SearchEverywhere)
+let g:WhichKeyDesc_find_file1 = '<leader>. Find file'
 " Jump to bookmark
 map <Leader><CR> <Action>(Bookmarks)
+
 let g:WhichKeyDesc_jump_to_bookmark = '<leader>⏎ Jump to bookmark'
+" Switch buffer
+map <Leader>< <Action>(Switcher)
+let g:WhichKeyDesc_switch_buffer = '<leader>< Switch buffer'
+" Switch to last buffer
+map <Leader>` <Action>(GoToLastTab)
+let g:WhichKeyDesc_switch_to_last_buffer = '<leader>` Switch to last buffer'
 " Toggle last popup
-map <Leader>. <Action>(Pangu.Format.Editor)
-let g:WhichKeyDesc_Pangu_Format_Editor = '<leader>. Pangu.Format.Editor'
-" ShowIntentionActions
-map <Leader>/ <Action>(ShowIntentionActions)
-let g:WhichKeyDesc_new_Class = '<leader>/ ShowIntentionActions'
+map <Leader>e <Action>(JumpToLastWindow)
+let g:WhichKeyDesc_toggle_last_popup = '<leader>e Toggle last popup'
+" Pangu.Format.Editor
+map <Leader>, <Action>(Pangu.Format.Editor)
+let g:WhichKeyDesc_Pangu_Format_Editor = '<leader>, Pangu.Format.Editor'
+" ShowIntentionActions idea 快捷键 C-/
+map <Leader>? <Action>(ShowIntentionActions)
+let g:WhichKeyDesc_new_Class = '<leader>? ShowIntentionActions'
+
+"
+" +project
+
+let g:WhichKeyDesc_project_leader = '<leader>p +project'
+" Invalidate project cache
+map <Leader>pi <Action>(InvalidateCaches)
+let g:WhichKeyDesc_invalidate_project_cache = '<leader>pi Invalidate project cache'
+" Switch projects
+map <Leader>pp <Action>(ManageRecentProjects)
+let g:WhichKeyDesc_switch_projects = '<leader>pp Switch projects'
+" Show TODO
+map <Leader>pt <Action>(ActivateTODOToolWindow)
+let g:WhichKeyDesc_show_todo = '<leader>pt Show TODO'
+" List project tasks
+map <Leader>pz <Action>(RunAnything)
+let g:WhichKeyDesc_list_project_tasks = '<leader>pz List project tasks'
 
 
 "
 " +code
 
 let g:WhichKeyDesc_code_leader = '<leader>c +code'
-" Jump to references
-map <Leader>cD <Action>(ShowUsages)
-let g:WhichKeyDesc_jump_to_refs = '<leader>cD Jump to references'
-" Execute Intention Action
-map <Leader>ca <Action>(GotoAction)
-let g:WhichKeyDesc_exec_intention_action = '<leader>ca GotoAction'
 " Compile
 map <Leader>cc <Action>(CompileDirty)
 let g:WhichKeyDesc_compile = '<leader>cc Compile'
 " Format buffer/region
 nmap <Leader>cf <Action>(ReformatCode)
 let g:WhichKeyDesc_format_buffer_region = '<leader>cf Format buffer/region'
-" Jump to symbol in current workspace
-map <Leader>cj <Action>(SearchEverywhere)
-let g:WhichKeyDesc_jump_to_symbol_in_current_workspace = '<leader>cj Jump to symbol in current workspace'
 " Show documentation
 map <Leader>ck <Action>(QuickJavaDoc)
 let g:WhichKeyDesc_show_doc = '<leader>ck Show documentation'
@@ -206,30 +311,79 @@ let g:WhichKeyDesc_find_type_def = '<leader>ct Find type definition'
 " Recompile
 map <Leader>cC <Action>(Compile)
 let g:WhichKeyDesc_recompile = '<leader>cC Recompile'
+" 显示该类下的方法
+map <Leader>cm <Action>(FileStructurePopup)
+let g:WhichKeyDesc_show_method = '<leader>cm FileStructurePopup'
+" 显示该类下的继承关系
+map <Leader>ch <Action>(TypeHierarchy)
+let g:WhichKeyDesc_show_method_type_hierarchy = '<leader>ch TypeHierarchy'
+" Select what to generate
+let g:WhichKeyDesc_Major_Refactoring_Generate = "<leader>cg generate"
+nnoremap <leader>cg      :action Generate<CR>
+vnoremap <leader>cg      <Esc>:action Generate<CR>
+
+"
+" +open
+
+let g:WhichKeyDesc_open_leader = '<leader>o +open'
+" New window
+nmap <Leader>of <Action>(EditSourceInNewWindow)
+let g:WhichKeyDesc_new_window = '<leader>of New window'
+" Select window
+nmap <Leader>oF <Action>(OpenProjectWindows)
+let g:WhichKeyDesc_select_window = '<leader>oF Select window'
+" Reveal in filer
+nmap <Leader>oo <Action>(RevealIn)
+let g:WhichKeyDesc_reveal_in_filer = '<leader>oo Reveal in filer'
+" Open terminal
+nmap <Leader>ot <Action>(ActivateTerminalToolWindow)
+let g:WhichKeyDesc_open_terminal = '<leader>ot Open terminal'
+" Open terminal here
+nmap <Leader>oT <Action>(Terminal.OpenInTerminal)
+let g:WhichKeyDesc_open_terminal_here = '<leader>oT Open terminal here'
+" 查看文件位置
+nmap <Leader>ol <Action>(SelectInProjectView)
+let g:WhichKeyDesc_findOrFormat_findFileLocation = "<leader>ol FindFileLocation"
 
 
 "
 " +file
 
 let g:WhichKeyDesc_file_leader = '<leader>f +file'
+" Open project editorconfig
+map <Leader>fc <Action>(NewEditorConfigFile)
+let g:WhichKeyDesc_open_project_editorconfig = '<leader>fc Open project editorconfig'
 " Recent files
 map <Leader>fr <Action>(RecentFiles)
 let g:WhichKeyDesc_recent_files = '<leader>fr Recent files'
 " Save file
 noremap <Leader>fs :<C-u>w<CR>
 let g:WhichKeyDesc_save_file = '<leader>fs Save file'
+" Copy filename
+map <Leader>fy <Action>(CopyAbsolutePath)
+let g:WhichKeyDesc_copy_filename = '<leader>fy Copy filename'
 " Rename/move file
 map <Leader>fR <Action>(RefactoringMenu)
 let g:WhichKeyDesc_rename_move_file = '<leader>fR Rename/move file'
-" 查看文件位置
-nmap <Leader>fl <Action>(SelectInProjectView)
-let g:WhichKeyDesc_findOrFormat_findFileLocation = "<leader>fl FindFileLocation"
-" 显示该类下的方法
-map <Leader>fm <Action>(FileStructurePopup)
-let g:WhichKeyDesc_show_method = '<leader>fm FileStructurePopup'
-" Show documentation
-map <Leader>fk <Action>(QuickJavaDoc)
-let g:WhichKeyDesc_show_doc = '<leader>fk Show documentation'
+" Create a new Element.
+let g:WhichKeyDesc_Major_Refactoring_NewElement = "<leader>fn new-element"
+nnoremap <leader>fn      :action NewElement<CR>
+vnoremap <leader>fn      :action NewElement<CR>
+
+"
+" +search
+
+let g:WhichKeyDesc_search_leader = '<leader>s +search'
+" Search project
+map <Leader>sp <Action>(FindInPath)
+let g:WhichKeyDesc_search_project2 = '<leader>sp Search project'
+nmap <leader>sf <action>(GotoFile)
+let g:WhichKeyDesc_search_findFile = "<leader>sf FindFile"
+nmap <leader>sc <action>(GotoAction)
+let g:WhichKeyDesc_FindOrFormat_Commands = "<leader>sc Commands"
+" Jump to symbol in current workspace
+map <Leader>sj <Action>(SearchEverywhere)
+let g:WhichKeyDesc_jump_to_symbol_in_current_workspace = '<leader>sj Jump to symbol in current workspace'
 
 
 "
@@ -259,15 +413,46 @@ let g:WhichKeyDesc_git_time_machine = '<leader>gt Time machine'
 map <Leader>gB <Action>(Annotate)
 let g:WhichKeyDesc_blame = '<leader>gB Blame'
 
+
+"
+" +window
+
+" Show error description
+nmap <C-w>d <Action>(ShowErrorDescription)
+let g:WhichKeyDesc_show_error_description1 = '<C-w>d Show error description'
+nmap <C-w><C-d> <Action>(ShowErrorDescription)
+let g:WhichKeyDesc_show_error_description2 = '<C-w><C-d> Show error description'
+
+noremap <Leader>wh <C-w>h
+noremap <Leader>wj <C-w>j
+noremap <Leader>wk <C-w>k
+noremap <Leader>wl <C-w>l
+noremap <Leader>ws <C-w>s
+noremap <Leader>wv <C-w>v
+noremap <Leader>ww <C-w>w
+noremap <Leader>wW <C-w>W
+noremap <Leader>wq <C-w>c
+" Maximize window
+noremap <Leader>wm <Action>(Unsplit)
+let g:WhichKeyDesc_window_leader = '<leader>w +window'
+
+"
+" +toggle
+
+let g:WhichKeyDesc_toggle_leader = '<leader>t +toggle'
+" Soft line wrapping
+map <Leader>tw <Action>(EditorToggleUseSoftWraps)
+let g:WhichKeyDesc_toggle_soft_line_wrapping = '<leader>tw Soft line wrapping'
+
 "
 " +help
 
 let g:WhichKeyDesc_help_leader = '<leader>h +help'
 " Show Event Log
-map <Leader>he <Action>(ActivateEventLogToolWindow)
+map <Leader>he :action ActivateEventLogToolWindow<CR>
 let g:WhichKeyDesc_event_log = '<leader>he Show Event Log'
 " Reload IdeaVim config
-map <Leader>hr <Action>(IdeaVim.ReloadVimc.reload)
+map <Leader>hr <Action>(IdeaVim.ReloadVimRc.reload)
 let g:WhichKeyDesc_reload_ideavim_config = '<leader>hr Reload IdeaVim config'
 " Change theme
 map <Leader>ht <Action>(ChangeLaf)
@@ -275,84 +460,22 @@ let g:WhichKeyDesc_change_theme = '<leader>ht Change theme'
 
 
 "
-" +open
-
-let g:WhichKeyDesc_open_leader = '<leader>o +open'
-" New window
-nmap <Leader>of <Action>(EditSourceInNewWindow)
-let g:WhichKeyDesc_new_window = '<leader>of New window'
-" Select window
-nmap <Leader>oF <Action>(OpenProjectWindows)
-let g:WhichKeyDesc_select_window = '<leader>oF Select window'
-" Reveal in filer
-nmap <Leader>oo <Action>(RevealIn)
-let g:WhichKeyDesc_reveal_in_filer = '<leader>oo Reveal in filer'
-" Open terminal
-nmap <Leader>ot <Action>(ActivateTerminalToolWindow)
-let g:WhichKeyDesc_open_terminal = '<leader>ot Open terminal'
-" Open terminal here
-nmap <Leader>oT <Action>(Terminal.OpenInTerminal)
-let g:WhichKeyDesc_open_terminal_here = '<leader>oT Open terminal here'
-
-"
-" +search
-
-let g:WhichKeyDesc_search_leader = '<leader>s +search'
-" Search project
-map <Leader>sp <Action>(FindInPath)
-let g:WhichKeyDesc_search_project2 = '<leader>sp Search project'
-nmap <leader>sf <action>(GotoFile)
-let g:WhichKeyDesc_search_findFile = "<leader>sf FindFile"
-nmap <leader>sc <action>(GotoAction)
-let g:WhichKeyDesc_FindOrFormat_Commands = "<leader>sc Commands"
-
-"
-" +project
-
-let g:WhichKeyDesc_project_leader = '<leader>p +project'
-" Invalidate project cache
-map <Leader>pi <Action>(InvalidateCaches)
-let g:WhichKeyDesc_invalidate_project_cache = '<leader>pi Invalidate project cache'
-" Switch projects
-map <Leader>pp <Action>(ManageRecentProjects)
-let g:WhichKeyDesc_switch_projects = '<leader>pp Switch projects'
-" Show TODO
-map <Leader>pt <Action>(ActivateTODOToolWindow)
-let g:WhichKeyDesc_show_todo = '<leader>pt Show TODO'
-" List project tasks
-map <Leader>pz <Action>(RunAnything)
-let g:WhichKeyDesc_list_project_tasks = '<leader>pz List project tasks'
-
-"
 " +refactoring
 
-" Code cleanup
-let g:WhichKeyDesc_refactoring_leader = '<leader>m +refactoring'
-
-" Select what to generate
-let g:WhichKeyDesc_Major_Refactoring_Generate = "<leader>mg generate"
-nnoremap <leader>mg      :action Generate<CR>
-vnoremap <leader>mg      <Esc>:action Generate<CR>
-
-" Create a new Element.
-let g:WhichKeyDesc_Major_Refactoring_NewElement = "<leader>mn new-element"
-nnoremap <leader>mn      :action NewElement<CR>
-vnoremap <leader>mn      :action NewElement<CR>
-
+let g:WhichKeyDesc_refactoring = '<leader>m +refactoring'
 " Choose a refactoring action
-let g:WhichKeyDesc_Major_Refactoring_ChooseRefactoringAction = "<leader>mr choose-refactoring-action"
-nnoremap <leader>mr      :action Refactorings.QuickListPopupAction<CR>
+let g:WhichKeyDesc_refactoring_ChooseRefactoringAction = "<leader>mr choose-refactoring-action"
+noremap <leader>mr      <action Refactorings.QuickListPopupAction<CR>
 vnoremap <leader>mr      <Esc>:action Refactorings.QuickListPopupAction<CR>
-""" Extract Submenu ---------------------------------
-let g:WhichKeyDesc_Major_Refactoring_CoFdeCleanup_Extract = "<leader>me +extract"
-
-" Extract method
-let g:WhichKeyDesc_Major_Refactoring_CodeCleanup_Extract_Method = "<leader>mem method"
-nnoremap <leader>mem    :action ExtractMethod<CR>
-vnoremap <leader>mem    <Esc>:action ExtractMethod<CR>
-
-" Extract superclass
-let g:WhichKeyDesc_Major_Refactoring_CodeCleanup_Extract_Superclass = "<leader>mes superclass"
-nnoremap <leader>mes    :action ExtractSuperclass<CR>
-vnoremap <leader>mes    <Esc>:action ExtractSuperclass<CR>
-""" ---------------------------------------------
+" extract method/function
+let g:WhichKeyDesc_refactoring_ExtractMethod = "<leader>mm extract method/function"
+map <leader>mm <action>(ExtractMethod)
+" extract constant
+let g:WhichKeyDesc_refactoring_introduceConstant = "<leader>mc extract constant"
+map <leader>mc <action>(IntroduceConstant)
+" extract field
+let g:WhichKeyDesc_refactoring_IntroduceField = "<leader>mf extract field"
+map <leader>mf <action>(IntroduceField)
+" extract variable
+let g:WhichKeyDesc_refactoring_IntroduceVariable = "<leader>mv extract variable"
+map <leader>mv <action>(IntroduceVariable)
