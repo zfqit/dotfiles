@@ -5,9 +5,9 @@ set surround
 " 输入法插件
 set keep-english-in-normal
 " window 默认情况下使用
-" set keep-english-in-normal[-and-restore-in-insert]
+set keep-english-in-normal[-and-restore-in-insert]
 " Mac 使用
-let keep_input_source_in_normal="com.apple.keylayout.ABC"
+" let keep_input_source_in_normal="com.apple.keylayout.ABC"
 
 " argtextobj
 set argtextobj
@@ -216,6 +216,9 @@ let g:WhichKeyDesc_back = 'gh back'
 " 跳转到上次上述跳转的下个位置 前进
 nmap gl :action Forward<CR>
 let g:WhichKeyDesc_Forward = 'gl Forward'
+" Translate 翻译插件
+map gf <Action>($EditorTranslateAction)
+let g:WhichKeyDesc_Translate = 'gf Translate'
 " 折叠
 nmap zm <Action>(CollapseAllRegions)
 let g:WhichKeyDesc_collapse_all_regions = 'zm Collapse All Regions'
@@ -384,6 +387,8 @@ let g:WhichKeyDesc_FindOrFormat_Commands = "<leader>sc Commands"
 " Jump to symbol in current workspace
 map <Leader>sj <Action>(SearchEverywhere)
 let g:WhichKeyDesc_jump_to_symbol_in_current_workspace = '<leader>sj Jump to symbol in current workspace'
+map <Leader>sr <Action>(Tool.GotoRequestService)
+let g:WhichKeyDesc_goto_request_service = '<leader>sr GotoRequestService'
 
 
 "
