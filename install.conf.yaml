@@ -36,12 +36,13 @@
     ~/.config/skhd: yabai_conf/skhd
     ~/.zprofile: zsh/.zprofile
     ~/.zshrc: zsh/.zshrc
-    ~/.oh-my-zsh/themes/bsif.zsh-theme: zsh/bsif.zsh-theme
+    ~/.config/starship: starship
     ~/.bashrc: .shell-scripts/.bashrc
     ~/.profile: .shell-scripts/.profile
     ~/.bash_profile: .shell-scripts/.bash_profile
     ~/.shell-scripts: .shell-scripts
     ~/.ideavimrc: idea/.ideavimrc
+    ~/.config/sketchybar: yabai_conf/sketchybar
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/custom-vscode-assets: vscode/custom-vscode-assets
