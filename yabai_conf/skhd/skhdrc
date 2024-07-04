@@ -111,6 +111,9 @@ shift + cmd - 0 : yabai -m window --space 9 && yabai -m space --focus 10
 #  ╭──────────────────────────────────────────────────────────────────────────────╮
 #  │ launcher                                                                     │
 #  ╰──────────────────────────────────────────────────────────────────────────────╯
+# 列出所有的软件: sudo find / -iname "*.app"
+# 查看软件的包名: mdls -name kMDItemCFBundleIdentifier /Applications/Safari.app
+# 查看更多按键码: skhd -o
 alt - 1: open -a "Google Chrome"          # Google Chrome 浏览器k
 alt - 2: open -a "WezTerm"                # 终端 WezTerm
 alt - 3: open -a "IntelliJ IDEA Ultimate" # IDEA
