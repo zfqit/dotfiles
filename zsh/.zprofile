@@ -32,26 +32,15 @@ export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 ################################################################
-#                           nvim
+#                             nvim
+# docs: https://github.com/nvm-sh/nvm
+# nvm-windows: https://github.com/coreybutler/nvm-windows
 ################################################################
 if [ -f ~/.config/nvim/init.lua ]; then
   export EDITOR='nvim'
 else
   export EDITOR='vim'
 fi
-
-################################################################
-#                             nvim
-# docs: https://github.com/nvm-sh/nvm
-# nvm-windows: https://github.com/coreybutler/nvm-windows
-################################################################
-################################################################
-#                             adb
-# docs: https://developer.android.com/studio/command-line/adb.html
-################################################################
-export ANDROID_HOME=/Users/zhou/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 ###############################################################
 #                             sbin
