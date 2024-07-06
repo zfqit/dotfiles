@@ -30,6 +30,7 @@
 - link:
     ~/.config/nvim: nvim
     ~/.config/vifm: vifm
+    ~/.config/yazi: yazi
     ~/.config/wezterm: wezterm
     ~/.config/yabai: yabai_conf/yabai
     ~/.config/spacebar: yabai_conf/spacebar
@@ -66,6 +67,7 @@
     - brew install ripgrep
     - brew install trash
     - brew install vifm
+    - brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide font-symbols-only-nerd-font
     - brew install fuzzy-find
     - brew install starship
     - brew install asdf
