@@ -34,13 +34,11 @@ yabai -m config window_gap 3
 yabai -m config external_bar all:0:25
 
 # 开启边框(removed options)
-# yabai -m config window_border on
-# yabai -m config window_border_width 1
-# yabai -m config active_window_border_color 0xff00ff00
-# yabai -m config normal_window_border_color 0x00888888
-yabai -m config window_opacity on
-yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.85
+borders active_color=0xff00ff00 inactive_color=0x00888888 width=2 2>/dev/null 1>&2 &
+yabai -m config window_opacity off
+# yabai -m config window_opacity on
+# yabai -m config active_window_opacity 1.0
+# yabai -m config normal_window_opacity 0.85
 
 yabai -m signal --add label="flash_focus" event="window_focused" action="yabai -m window \$YABAI_WINDOW_ID --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window \$YABAI_WINDOW_ID --opacity 0.0"
 # 禁用光标跟随模式
@@ -52,13 +50,63 @@ yabai -m config mouse_follows_focus on
 # ╰──────────────────────────────────────────────────────────────────────────────╯
 # 查询软件窗口的的所有软件信息: yabai -m query --windows
 # MacOS applications
-systemApp='^(访达|计算器|Calendar|活动监视器|日历|System Preferences|系统偏好设置|Mail|备忘录|邮件)$'
-yabai -m rule --add app="${systemApp}" manage=off
+
+yabai -m rule --add manage=off app="Finder"
+yabai -m rule --add manage=off app="访达"
+yabai -m rule --add manage=off app="Safari"
+yabai -m rule --add manage=off app="System\ Preferences"
+yabai -m rule --add manage=off app="系统设置"
+yabai -m rule --add manage=off app="App\ Store"
+yabai -m rule --add manage=off app="Activity\ Monitor"
+yabai -m rule --add manage=off app="活动监视器"
+yabai -m rule --add manage=off app="Calculator"
+yabai -m rule --add manage=off app="计算器"
+yabai -m rule --add manage=off app="Dictionary"
+yabai -m rule --add manage=off app="词典"
+yabai -m rule --add manage=off app="mpv"
+yabai -m rule --add manage=off app="System\ Information"
+yabai -m rule --add manage=off app="系统信息"
+yabai -m rule --add manage=off app="Preview"
+yabai -m rule --add manage=off app="预览"
+yabai -m rule --add manage=off app="System Settings"
+yabai -m rule --add manage=off app="Stickies"
+yabai -m rule --add manage=off app="便笺"
+yabai -m rule --add manage=off app="Calendar"
+
+# systemApp='^(访达|计算器|Calendar|活动监视器|日历|System Preferences|系统偏好设置|Mail|备忘录|邮件)$'
+# yabai -m rule --add app="${systemApp}" manage=off
 
 # Users Applications
 # Apifox|Parsec|Another Redis Desktop Manager|ToDesk
-otherApp='^(pot|IINA|网易云音乐|Tencent Lemon|微信|WeChatc|QQ|Telegra|企业微信|Docker Desktop|ClashX|Raycast|腾讯会议|钉钉|qView|LX Music|Motrix)$'
-yabai -m rule --add app="${otherApp}" manage=off
+yabai -m rule --add manage=off app="IINA"
+yabai -m rule --add manage=off app="网易云音乐"
+yabai -m rule --add manage=off app="ToDesk"
+yabai -m rule --add manage=off app="Apifox"
+yabai -m rule --add manage=off app="Another Redis Desktop Manager"
+yabai -m rule --add manage=off app="Tencent\ Lemon"
+yabai -m rule --add manage=off app="微信"
+yabai -m rule --add manage=off app="WeChatc"
+yabai -m rule --add manage=off app="QQ"
+yabai -m rule --add manage=off app="Telegram"
+yabai -m rule --add manage=off app="企业微信"
+yabai -m rule --add manage=off app="Docker\ Desktop"
+yabai -m rule --add manage=off app="ClashX"
+yabai -m rule --add manage=off app="Raycast"
+yabai -m rule --add manage=off app="腾讯会议"
+yabai -m rule --add manage=off app="钉钉"
+yabai -m rule --add manage=off app="qView"
+yabai -m rule --add manage=off app="LX\ Music"
+yabai -m rule --add manage=off app="Motrix"
+yabai -m rule --add manage=off app="Parsec"
+yabai -m rule --add manage=off app="Sequel\ Ace"
+yabai -m rule --add manage=off app="Navicat\ Premium"
+yabai -m rule --add manage=off app="LuLu"
+yabai -m rule --add manage=off app="pot"
+yabai -m rule --add manage=off app="RustDesk"
+yabai -m rule --add manage=off app="Bob"
+
+# otherApp='^(pot|IINA|网易云音乐|Tencent Lemon|微信|WeChatc|QQ|Telegra|企业微信|Docker Desktop|ClashX|Raycast|腾讯会议|钉钉|qView|LX Music|Motrix)$'
+# yabai -m rule --add app="${otherApp}" manage=off
 
 ### config loaded
 echo "yabai config loaded"

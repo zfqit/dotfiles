@@ -38,7 +38,6 @@
     ~/.zshrc: zsh/.zshrc
     ~/.config/starship: starship
     ~/.bashrc: .shell-scripts/.bashrc
-    ~/.profile: .shell-scripts/.profile
     ~/.bash_profile: .shell-scripts/.bash_profile
     ~/.shell-scripts: .shell-scripts
     ~/.ideavimrc: idea/.ideavimrc
