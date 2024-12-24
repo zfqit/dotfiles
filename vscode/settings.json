@@ -76,14 +76,7 @@
   // extensions
   /////////////////////////////////////////
   // Template String Converter
-  "template-string-converter.validLanguages": [
-    "svelte",
-    "typescript",
-    "javascript",
-    "typescriptreact",
-    "javascriptreact",
-    "vue"
-  ],
+  "template-string-converter.validLanguages": ["svelte", "typescript", "javascript", "typescriptreact", "javascriptreact", "vue"],
   // 图标插件隐藏左边的箭头
   "vsicons.presets.hideExplorerArrows": true,
   "material-icon-theme.hidesExplorerArrows": true,
@@ -96,15 +89,7 @@
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "eslint.quiet": true,
-  "eslint.probe": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "html",
-    "vue",
-    "jsx"
-  ],
+  "eslint.probe": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "jsx"],
   "eslint.alwaysShowStatus": true,
   "eslint.debug": true,
   // prettier 格式化默认设置
@@ -113,15 +98,10 @@
   // 自定义宏(自定义命令):在 keybindings/vim/vspcecode 快捷键中可以用
   // 需要安装插件: https://marketplace.visualstudio.com/items?itemName=jeff-hykin.macro-commander
   "macros": {
-    "copyExplorerFileWithoutRename": [
-      "filesExplorer.copy",
-      "filesExplorer.paste"
-    ]
+    "copyExplorerFileWithoutRename": ["filesExplorer.copy", "filesExplorer.paste"]
   },
   // vscode 自定义加载 css/js   custom-vscode-assets
-  "vscode_custom_css.imports": [
-    "file:///Users/zhou/Desktop/codes/dotfiles/vscode/custom-vscode-assets/explorer-scrollbar.css"
-  ],
+  "vscode_custom_css.imports": ["file:///Users/zhou/Desktop/codes/dotfiles/vscode/custom-vscode-assets/explorer-scrollbar.css"],
   //////////////////////////////////////////////////////////////////////////////
   //                                VIM 插件配置                               //
   //                   _                              __ _                    //
@@ -314,10 +294,7 @@
           "name": "auto import",
           "type": "commands",
           "icon": "file-symlink-file",
-          "commands": [
-            "extension.scanNodeModules",
-            "editor.action.organizeImports"
-          ]
+          "commands": ["extension.scanNodeModules", "editor.action.organizeImports"]
         }
       ]
     },
@@ -342,10 +319,7 @@
       "name": "format document",
       "type": "command",
       "icon": "symbol-namespace",
-      "commands": [
-        "editor.action.formatDocument",
-        "workbench.action.files.save"
-      ]
+      "commands": ["editor.action.formatDocument", "workbench.action.files.save"]
     },
     {
       // <leader>bb
@@ -419,5 +393,7 @@
   "workbench.colorTheme": "rimless-monokai",
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
-  }
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "editor.stickyScroll.enabled": false
 }

@@ -34,6 +34,7 @@
     ~/.config/wezterm: wezterm
     ~/.config/yabai: yabai_conf/yabai
     ~/.config/spacebar: yabai_conf/spacebar
+    ~/.config/sketchybar: yabai_conf/sketchybar
     ~/.config/skhd: yabai_conf/skhd
     ~/.zprofile: zsh/.zprofile
     ~/.zshrc: zsh/.zshrc
@@ -42,11 +43,11 @@
     ~/.bash_profile: .shell-scripts/.bash_profile
     ~/.shell-scripts: .shell-scripts
     ~/.ideavimrc: idea/.ideavimrc
-    ~/.config/sketchybar: yabai_conf/sketchybar
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
     ~/Library/Application Support/Code/User/custom-vscode-assets: vscode/custom-vscode-assets
-    ~/Library/Application Support/lazygit/config.yml: lazygit/config.yml
+    ~/.gitconfig: git/.gitconfig
+    ~/Library/Application Support/lazygit/config.yml: git/lazygit/config.yml
 - shell:
     - git submodule update --init --recursive
     - brew install --cask homebrew/cask-fonts/font-jetbrains-mono-nerd-font
@@ -72,7 +73,6 @@
     - brew install starship
     - brew install asdf
     - brew install koekeishiya/formulae/skhd
-    # - brew install cmacrae/formulae/spacebar
     - brew tap FelixKratz/formulae && brew install sketchybar
     - brew install koekeishiya/formulae/yabai
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
