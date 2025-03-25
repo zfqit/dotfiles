@@ -42,16 +42,17 @@ alias pb='bun run build'
 alias pu='npm i -g pnpm'
 
 # yazi
-function ya() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-  yazi "$@" --cwd-file="$tmp"
-  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
 
 # enable or disable clashx proxies
 alias setproxy='export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890'
 alias resetproxy="export https_proxy='' http_proxy='' all_proxy=''"
-resetproxy
+setproxy
+# resetproxy

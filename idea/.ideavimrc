@@ -287,6 +287,9 @@ let g:WhichKeyDesc_show_todo = '<leader>pt Show TODO'
 " List project tasks
 map <Leader>pz <Action>(RunAnything)
 let g:WhichKeyDesc_list_project_tasks = '<leader>pz List project tasks'
+" Run project
+map <Leader>pR <Action>(Run)
+let g:WhichKeyDesc_run_project = '<leader>pR Run project'
 
 
 "
@@ -397,8 +400,8 @@ let g:WhichKeyDesc_goto_request_service = '<leader>sr GotoRequestService'
 let g:WhichKeyDesc_git_leader = '<leader>g +git'
 " commit
 CheckinProject
-map <Leader>gm <Action>(CheckinProject)
-let g:WhichKeyDesc_Git_commit = '<leader>gm Git.Branches'
+map <Leader>gc <Action>(CheckinProject)
+let g:WhichKeyDesc_Git_commit = '<leader>gc Git.commit'
 " push
 map <Leader>gp <Action>(Vcs.Push)
 let g:WhichKeyDesc_Git_Push = '<leader>gp Vcs.Push'

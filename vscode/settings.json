@@ -395,5 +395,6 @@
     "FIG_NEW_SESSION": "1"
   },
   "liveServer.settings.donotShowInfoMsg": true,
-  "editor.stickyScroll.enabled": false
+  "editor.stickyScroll.enabled": false,
+  "editor.accessibilitySupport": "off"
 }

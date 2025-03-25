@@ -26,12 +26,6 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 ################################################################
-#                           pnpm
-################################################################
-export PNPM_HOME="$HOME/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-################################################################
 #                             nvim
 # docs: https://github.com/nvm-sh/nvm
 # nvm-windows: https://github.com/coreybutler/nvm-windows

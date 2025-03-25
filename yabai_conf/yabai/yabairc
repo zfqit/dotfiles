@@ -52,7 +52,6 @@ yabai -m config mouse_follows_focus off
 
 yabai -m rule --add manage=off app="Finder"
 yabai -m rule --add manage=off app="访达"
-yabai -m rule --add manage=off app="Safari"
 yabai -m rule --add manage=off app="System\ Preferences"
 yabai -m rule --add manage=off app="系统设置"
 yabai -m rule --add manage=off app="App\ Store"
@@ -104,6 +103,8 @@ yabai -m rule --add manage=off app="^LuLu$"
 yabai -m rule --add manage=off app="^pot$"
 yabai -m rule --add manage=off app="^RustDesk$"
 yabai -m rule --add manage=off app="^Bob$"
+yabai -m rule --add manage=off app="^富途牛牛$"
+yabai -m rule --add manage=off app="^IBKR Desktop$"
 
 # otherApp='^(pot|IINA|网易云音乐|Tencent Lemon|微信|WeChatc|QQ|Telegra|企业微信|Docker Desktop|ClashX|Raycast|腾讯会议|钉钉|qView|LX Music|Motrix)$'
 # yabai -m rule --add app="${otherApp}" manage=off
