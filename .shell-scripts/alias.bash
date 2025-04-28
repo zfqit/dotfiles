@@ -16,8 +16,6 @@ alias cp='cp -r'
 alias ls='lsd'
 alias la='ls -al'
 
-# vifm: https://github.com/vifm/vifm
-alias vifm='vifm . ~/Desktop/codes'
 alias vim='nvim'
 
 # vscode: https://code.visualstudio.com/
@@ -43,12 +41,12 @@ alias pu='npm i -g pnpm'
 
 # yazi
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }
 
 # enable or disable clashx proxies
