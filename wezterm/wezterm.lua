@@ -1,27 +1,30 @@
+----------------------------------------------------------
+-- github: https://github.com/wez/wezterm
+-- docs  : https://wezfurlong.org/wezterm
+----------------------------------------------------------
 local formatTabTitle = require("format-tab-title")
 local keybindings = require("keybindings")
 local wezterm = require("wezterm")
-local strfmt = string.format
 
 -- tab 样式
 wezterm.on("format-tab-title", formatTabTitle)
 
 -- 字体样式
-local fontSize = 16
+local fontSize = 18
 local font = wezterm.font_with_fallback({
   {
-    family = "JetBrainsMono Nerd Font Mono",
-    weight = "Light",
+    family = "Hack Nerd Font Mono",
+    weight = "Regular",
     italic = false,
-    harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, -- 禁止使用连体字符
+    harfbuzz_features = { "calt=0", "clig=0", "liga=0" }, -- 全部设置为0禁止使用连体字符
   },
-  "OperatorMono Nerd Font Mono",
-  "Hack Nerd Font Mono",
-  "Source Han Sans CN",
+  "Maple Mono SC NF",
+  "JetBrainsMono Nerd Font Mono",
 })
 
 return {
-  color_scheme = "Monokai (base16)",
+  -- colorschemes: https://wezfurlong.org/wezterm/colorschemes/index.html
+  color_scheme = "Tokyo Night Moon",
   font = font,
   line_height = 1,
   font_size = fontSize,
@@ -32,9 +35,9 @@ return {
   enable_scroll_bar = false,
   window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
   colors = {
-    cursor_bg = "#4385f4",
-    cursor_border = "#4385f4",
-    cursor_fg = "white",
+    cursor_bg = "#fbbc07",
+    cursor_border = "#fbbc07",
+    cursor_fg = "#f8f8f8",
   },
   leader = {
     -- like tmux prefix key
