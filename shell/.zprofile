@@ -6,6 +6,14 @@ export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
 export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/bottles"
 
+function has-command() {
+  if command -v "$1" >/dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 ################################################################
 #                           asdf
 ################################################################
@@ -20,8 +28,6 @@ export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/bott
 ################################################################
 #                           locale
 ################################################################
-# export LANG="zh_CN.UTF-8"
-# export LC_ALL="zh_CN.UTF-8"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
@@ -49,13 +55,10 @@ if [ -f ~/.fzf.zsh ]; then
 fi
 
 ################################################################
-# source bashrc
-################################################################
-source ~/.bashrc
-
-################################################################
 # starship
 # https://starship.rs/zh-CN/
 ################################################################
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG="${HOME}/.config/starship/config.toml"
+if has-command 'starship'; then
+  eval "$(starship init zsh)"
+  export STARSHIP_CONFIG="${HOME}/.config/starship/config.toml"
+fi
