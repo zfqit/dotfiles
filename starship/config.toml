@@ -15,9 +15,19 @@ $git_metrics\
 $git_status\
 $character"""
 
+right_format="""
+$env_var
+"""
+
 [character]
 success_symbol = '[](bold green)'
 error_symbol = '[](bold red) '
 
 [directory]
 truncation_symbol = '  '
+
+[env_var.https_proxy]
+variable = "https_proxy"
+format = "[$env_value]($style) "
+default = ''
+style = 'bold cyan'
